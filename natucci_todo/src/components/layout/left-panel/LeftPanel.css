@@ -1,0 +1,19 @@
+#main .left-panel {
+    background-color: rgb(50, 50, 50);
+    height: 100vh;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#main .left-panel-header {
+    height: 50%;
+    box-shadow: 0 0 4px 0 rgb(60, 60, 60);
+    padding: 5px;
+}
+
+#main .left-panel-projects {
+    padding: 10px;
+    height: 50%;
+}
