@@ -1,4 +1,4 @@
-import { Nav, Navbar } from "react-bootstrap";
+import Assunto from "./assuntos/Assunto";
 import "./LeftPanel.css";
 
 const LeftPanel = () => {
@@ -7,33 +7,13 @@ const LeftPanel = () => {
             <div className="left-panel-header">
                 <p id="title">NATUCCI TUDO APP</p>
 
-                <Navbar>
-                    <Nav>
-                        <Nav.Item>
-                            <Nav.Link>
-                                <p>Hoje</p>
-                            </Nav.Link>
-
-                            <Nav.Link>
-                                <p>Nos próximos dias</p>
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </Navbar>
+                <p>Hoje</p>
+                <p>Nos próximos dias</p>
             </div>
 
             <div className="left-panel-projects">
                 <p id="title">Projetos</p>
-
-                <Navbar>
-                    <Nav>
-                        <Nav.Item>
-                            <Nav.Link>
-                                <p>Trabalho</p>
-                            </Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                </Navbar>
+                <Assunto content="Trabalho" />
             </div>
         </section>
     )

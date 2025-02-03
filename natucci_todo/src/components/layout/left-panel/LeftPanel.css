@@ -10,10 +10,10 @@
 #main .left-panel-header {
     height: 50%;
     box-shadow: 0 0 4px 0 rgb(60, 60, 60);
-    padding: 5px;
+    padding: 15px;
 }
 
 #main .left-panel-projects {
-    padding: 10px;
     height: 50%;
+    padding: 15px;
 }
