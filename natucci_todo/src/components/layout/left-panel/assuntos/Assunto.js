@@ -2,7 +2,7 @@ import "./Assunto.css";
 
 const Assunto = ({content}) => {
     return (
-        <div class="projects">
+        <div className="projects">
             <p>{content}</p>
             <p>&#128465;</p>
         </div>
