@@ -1,3 +1,4 @@
-.table {
-    min-width: 80%;
+.tasks .table-responsive table {
+    min-width: 50%;
+    background-color: black;
 }
