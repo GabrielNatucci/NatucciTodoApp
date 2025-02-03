@@ -1,6 +1,11 @@
-const Task = ({content}) => {
+const Task = ({id, content, day, time}) => {
     return (
-        <p>{content}</p>
+        <tr>
+            <td>{id}</td>
+            <td>{content}</td>
+            <td>{day}</td>
+            <td>{time}</td>
+        </tr>
     )
 }
 
