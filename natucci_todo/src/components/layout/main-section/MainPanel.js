@@ -10,13 +10,26 @@ const MainPanel = ({
     activeTimeFilter
 }) => {
     const [filter, setFilter] = useState('all');
+    const [showDescription, setShowDescription] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
+
+        const selectedDate = formData.get('dueDate');
+
+        // Adiciona 1 dia à data selecionada
+        const [year, month, day] = selectedDate.split('-').map(Number);
+        const adjustedDate = new Date(year, month - 1, day + 1);
+        const finalDate = adjustedDate.toISOString().split('T')[0];
+
+        console.log('Data selecionada:', selectedDate);
+        console.log('Data ajustada:', finalDate);
+
         const newTask = {
             text: formData.get('taskText'),
-            dueDate: formData.get('dueDate'),
+            description: formData.get('taskDescription'),
+            dueDate: finalDate,
             dueTime: formData.get('dueTime'),
             completed: false,
             createdAt: new Date().toISOString()
@@ -25,13 +38,19 @@ const MainPanel = ({
         if (newTask.text.trim()) {
             onAddTask(newTask);
             e.target.reset();
+            setShowDescription(false);
         }
     };
 
     const isToday = (dateStr) => {
         if (!dateStr) return false;
         const today = new Date();
-        const taskDate = new Date(dateStr);
+        // Ajustando a data da tarefa para considerar o fuso horário local
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const taskDate = new Date(year, month - 1, day);
+        console.log('Data da Tarefa:', taskDate.toLocaleDateString());
+        console.log('Hoje:', today.toLocaleDateString());
+
         return (
             taskDate.getDate() === today.getDate() &&
             taskDate.getMonth() === today.getMonth() &&
@@ -75,28 +94,54 @@ const MainPanel = ({
         return new Date(a.dueDate) - new Date(b.dueDate);
     });
 
-    // Obtém a data atual no formato YYYY-MM-DD para o valor mínimo do input de data
-    const today = new Date().toISOString().split('T')[0];
-
     return (
         <section className="main-section">
             <form onSubmit={handleSubmit} className="main-section-quick-add">
-                <input
-                    id="task-text-input"
-                    name="taskText"
-                    className="main-section-quick-add-input"
-                    type="text"
-                    placeholder="Nome da sua tarefa"
-                    required
-                    aria-label="Nome da tarefa"
-                />
+                <div className="task-inputs">
+                    <input
+                        id="task-text-input"
+                        name="taskText"
+                        className="main-section-quick-add-input"
+                        type="text"
+                        placeholder="Nome da sua tarefa"
+                        required
+                        aria-label="Nome da tarefa"
+                    />
+                    <button
+                        type="button"
+                        className="toggle-description-button"
+                        onClick={() => setShowDescription(!showDescription)}
+                        aria-label={showDescription ? "Ocultar descrição" : "Adicionar descrição"}
+                    >
+                        {showDescription ? "−" : "+"}
+                    </button>
+                </div>
+
+                {showDescription && (
+                    <textarea
+                        id="task-description-input"
+                        name="taskDescription"
+                        className="main-section-quick-add-input description-input"
+                        placeholder="Descrição da tarefa (opcional)"
+                        rows="3"
+                        aria-label="Descrição da tarefa"
+                    />
+                )}
+
                 <div className="datetime-inputs">
                     <input
                         id="task-date-input"
                         name="dueDate"
                         className="main-section-quick-add-input"
                         type="date"
-                        min={today}
+                        defaultValue={(() => {
+                            const now = new Date();
+                            now.setHours(0, 0, 0, 0);
+                            const year = now.getFullYear();
+                            const month = String(now.getMonth() + 1).padStart(2, '0');
+                            const day = String(now.getDate()).padStart(2, '0');
+                            return `${year}-${month}-${day}`;
+                        })()}
                         aria-label="Data de conclusão"
                     />
                     <input

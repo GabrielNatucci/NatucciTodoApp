@@ -137,3 +137,36 @@
         opacity: 1;
     }
 }
+
+.task-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.expand-button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.expand-button:hover {
+    transform: scale(1.1);
+}
+
+.task-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: var(--secondary-color);
+    border-radius: var(--border-radius);
+    line-height: 1.4;
+}
