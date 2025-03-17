@@ -1,19 +1,150 @@
-#main .left-panel {
-    background-color: rgb(50, 50, 50);
-    height: 100vh;
-    width: 20%;
+.left-panel {
+    width: 300px;
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+}
+
+.left-panel h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+.left-panel h2 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.time-filters {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.time-filters button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: none;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-filters button:hover {
+    background: var(--secondary-color);
+}
+
+.time-filters button.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.left-panel-projects {
+    margin-bottom: 2rem;
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-item {
+    display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#main .left-panel-header {
-    height: 50%;
-    box-shadow: 0 0 4px 0 rgb(60, 60, 60);
-    padding: 15px;
+.project-item:hover {
+    background: var(--secondary-color);
 }
 
-#main .left-panel-projects {
-    height: 50%;
-    padding: 15px;
+.project-item.active {
+    background: var(--primary-color);
+    color: white;
+}
+
+.project-item.active .project-count {
+    background: white;
+    color: var(--primary-color);
+}
+
+.project-count {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+}
+
+.add-project {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: 1px dashed #ccc;
+    border-radius: var(--border-radius);
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.add-project:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.left-panel-stats {
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+}
+
+.stats-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.stat-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.icon {
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .left-panel {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
 }

@@ -1,4 +1,139 @@
-.tasks .table-responsive table {
-    min-width: 50%;
-    background-color: black;
+.tasks {
+    margin-top: 1rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.no-tasks {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.no-tasks p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.no-tasks span {
+    font-size: 0.9rem;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--secondary-color);
+    border: 1px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    box-shadow: var(--box-shadow);
+    transform: translateY(-1px);
+    border-color: var(--primary-color);
+}
+
+.task-item.completed {
+    background: #f8f9fa;
+    border-color: #e9ecef;
+    opacity: 0.8;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.task-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.task-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.task-text {
+    font-size: 1rem;
+    color: var(--text-color);
+}
+
+.task-time {
+    font-size: 0.8rem;
+    color: #6c757d;
+}
+
+.task-datetime {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.task-date,
+.task-time {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.task-date::before {
+    content: "📅";
+    font-size: 0.9rem;
+}
+
+.task-time::before {
+    content: "⏰";
+    font-size: 0.9rem;
+}
+
+.delete-task {
+    background: none;
+    border: none;
+    color: var(--danger-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.task-item:hover .delete-task {
+    opacity: 1;
+}
+
+.delete-task:hover {
+    color: #c0392b;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .tasks {
+        padding: 1rem;
+    }
+
+    .task-item {
+        padding: 0.75rem;
+    }
+
+    .delete-task {
+        opacity: 1;
+    }
 }
